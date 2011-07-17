@@ -1,4 +1,5 @@
 #!/bin/bash
+# Emits year or month of mod date
 
 function year
 {

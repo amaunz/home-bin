@@ -1,4 +1,6 @@
 #!/bin/bash
+# Sorts files in calendaric order
+# Moves to designated subdirs, if requested
 
 source $HOME/bin/get_file_date.sh
 IFS="
