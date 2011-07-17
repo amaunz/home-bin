@@ -1,5 +1,6 @@
 #!/bin/bash
 # find()s files or directories modified in a certain year in a certain path.
+#
 # Andreas Maunz 2010
 
 if [ $# -ne 2 ]; then
