@@ -1,0 +1,12 @@
+#!/bin/sh
+# to be called by git diff
+# 
+# place this in your .gitconfig to enable:
+#
+# [diff]
+#   external = /path/to/git_diff_wrapper
+#
+# see: http://goo.gl/XY2yT
+
+vimdiff "$2" "$5"
+
