@@ -103,3 +103,7 @@ endif
 
 " Spelling:
 autocmd FileType tex setlocal spell spelllang=en_us
+
+nnoremap <F2> :set invpaste paste?<CR>
+set pastetoggle=<F2>
+set showmode
