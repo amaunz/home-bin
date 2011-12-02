@@ -5,6 +5,8 @@
 #
 # [diff]
 #   external = /path/to/git_diff_wrapper
+# [pager]
+#   diff =
 #
 # see: http://goo.gl/XY2yT
 
