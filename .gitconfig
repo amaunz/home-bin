@@ -1,5 +1,0 @@
-[diff]
-  external = ~/bin/git_diff_wrapper
-
-[pager]
-  diff =
