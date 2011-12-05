@@ -4,4 +4,4 @@
 
 cp -v --backup=numbered .gitconfig_cfg .gitconfig 
 sed -i "s,REPO_DIR,`pwd`,g" .gitconfig
-#cp -v --backup=numbered .bashrc .bash_aliases .vimrc .irbrc .gitconfig "$HOME"
+cp -v --backup=numbered .bashrc .bash_aliases .vimrc .irbrc .gitconfig "$HOME"
