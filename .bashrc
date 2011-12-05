@@ -102,3 +102,6 @@ export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
 export LESS=' -R '
 export EDITOR='vim'
 
+export EDITOR=vim
+export HISTFILESIZE=5000
+export HISTCONTROL=ignoredups #don't put duplicate lines in the history.
