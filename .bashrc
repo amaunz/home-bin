@@ -103,5 +103,5 @@ export LESS=' -R '
 export EDITOR='vim'
 
 export EDITOR=vim
-export HISTFILESIZE=5000
+export HISTFILESIZE=50000
 export HISTCONTROL=ignoredups #don't put duplicate lines in the history.
