@@ -1,0 +1,5 @@
+[diff]
+  external = REPO_DIR/git_diff_wrapper
+
+[pager]
+  diff =

@@ -1,0 +1,20 @@
+#!/bin/bash
+
+if [ $# -ne 2 ]; then
+    echo
+    echo "Extracts diffs for a set of files with revision bounds."
+    echo "Usage: $0 <files> <revisions>"
+    echo "   files: file with one filename per line"
+    echo "   revisions: string 'rev1..rev2'"
+    echo
+    exit
+fi
+
+for f in `cat $1`; do 
+    if [ -e $f ]; then
+        rm $f.diffs
+        git whatchanged $2 $f | grep commit | colrm 1 7 | awk '{ a[NR]=$0 } END { for(i=NR; i; --i) print a[i] } ' | xargs -I % git diff %~..% $f >> $f.diffs
+    else
+        echo "Error! File $f non-existent."
+    fi
+done
