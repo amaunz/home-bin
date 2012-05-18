@@ -4,6 +4,7 @@ alias ll='ls $LS_OPTIONS -l'
 alias l='ls $LS_OPTIONS -lhrt'
 alias mv='mv -v --backup=numbered'
 alias cp='cp -v --backup=numbered'
+alias vless='vim -u /usr/share/vim/vimcurrent/macros/less.vim'
 backup_file() {
   cp -v --backup=numbered "$1" "$1~"
 }
