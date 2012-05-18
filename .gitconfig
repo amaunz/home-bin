@@ -1,0 +1,5 @@
+[diff]
+  external = /home/am/home-bin/git_diff_wrapper
+
+[pager]
+  diff =

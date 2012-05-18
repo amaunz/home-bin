@@ -98,9 +98,13 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
-export LESS=' -R '
+# colorize less (uses file ~/.lessfilter)
+export LESS="-R"
+eval "$(lesspipe)"
+
+# use vim as editor
 export EDITOR='vim'
 
-export EDITOR=vim
+# history large and no duplicates
 export HISTFILESIZE=50000
 export HISTCONTROL=ignoredups #don't put duplicate lines in the history.
