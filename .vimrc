@@ -40,12 +40,8 @@ set indentexpr=
 filetype indent on
 "filetype plugin indent off
 
-" enable php auto folding and remap folding keys to + - (and shift variants)
-let php_folding=1
-map + zo
-map * zR
-map - zc
-map _ zM
+" Get rid of folding
+set nofoldenable
 
 " This function determines, wether we are on the start of the line text (then tab indents) or
 " if we want to try autocompletion
@@ -101,8 +97,26 @@ else
   vmap gc gu~h
 endif
 
-" Spelling:
-autocmd FileType tex setlocal spell spelllang=en_us
+" Toggle function for spelling
+" Read http://goo.gl/dE6PR before using!
+func! ToggleSpl( lang )
+if &l:spl =~ '\v(^|,)\V'.escape(a:lang,'\').'\v(,|$)'
+"Alternatively, since 'spl' may not contain a comma this also
+"works:
+"if index(split(&l:spl,','),a:lang) != -1
+exec 'setl spl-='.a:lang
+else
+exec 'setl spl+='.a:lang
+endif
+:setl spell spl
+endfun
+
+" Toggle german spelling
+map <F3> :call ToggleSpl('de')<cr>
+" Toggle english spelling
+map <F4> :call ToggleSpl('en')<cr>
+
+
 
 " Enable proper pasting, see http://goo.gl/YauET
 nnoremap <F2> :set invpaste paste?<CR>

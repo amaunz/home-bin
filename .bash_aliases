@@ -25,7 +25,9 @@ function git_diff() {
 }
 
 # Clean up a Latex source directory (current directory)
-alias mktexclean='find -maxdepth 1 -type f -not -name "*tex" -and -not -name "*bib" -and -not -name "*eps" -exec mv {} /tmp \;'
+mktexclean {
+  find -maxdepth 1 -type f -name "*.toc" -or -name "*.out" -or -name "*.log" -or -name "*.aux" -or -name "*.bbl" -or -name "*.blg" | while read f; do mv $f /tmp; done
+}
 
 # Colorize man pages
 man() {
