@@ -24,8 +24,17 @@ function git_diff() {
   git diff --no-ext-diff -w "$@" | vim -R -
 }
 
+# git pretty log print
+function git_log() {
+  if [ -z $1 ]; then
+    echo "git_log yyyy-mm-dd"
+    return 1
+  fi
+  git log --since=$1 --date=local --pretty="%ad %an: %s" `git branch | grep "*" | sed 's/.*\s//g'`
+}
+
 # Clean up a Latex source directory (current directory)
-mktexclean {
+mktexclean() {
   find -maxdepth 1 -type f -name "*.toc" -or -name "*.out" -or -name "*.log" -or -name "*.aux" -or -name "*.bbl" -or -name "*.blg" | while read f; do mv $f /tmp; done
 }
 
