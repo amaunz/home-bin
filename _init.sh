@@ -1,8 +1,19 @@
 #!/bin/bash
-# Copies bash, git, vim and irb init files to $HOME
-# WARNING: Backups will be made, but of course user-defined settings in the files get lost.
+#
+# Copies some non-existing or non-differing dotfiles to $HOME
+# for differing files, vimdiff is invoked
+# @example { 
+#   ./_init.sh
+# }
 
-cp -v --backup=numbered .gitconfig_cfg .gitconfig 
+cp .gitconfig_cfg .gitconfig 
 sed -i "s,REPO_DIR,`pwd`,g" .gitconfig
-cp -v --backup=numbered .bashrc .bash_aliases .vimrc .irbrc .gitconfig .screenrc "$HOME"
-cp -v lessfilter "$HOME/.lessfilter"
+
+for f in .bashrc .bash_aliases .vimrc .irbrc .gitconfig .screenrc .htoprc .lessfilter; do 
+  if [ -f "$HOME/$f" ] && ! cmp "$f" "$HOME/$f" >/dev/null 2>1; then
+    read -p "File  $HOME/$f exists. Vimdiff (y/N)? " yn && case $yn in [Yy]* ) vimdiff "$f" "$HOME/$f" ; esac
+  else
+    cp -v $f "$HOME"
+  fi
+done
+
