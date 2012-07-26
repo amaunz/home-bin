@@ -14,6 +14,6 @@ detailed_cpu_time=1
 color_scheme=5
 delay=15
 left_meters=AllCPUs Memory Swap
-left_meter_modes=1 2 2
+left_meter_modes=1 1 1
 right_meters=Tasks LoadAverage Uptime Clock
 right_meter_modes=1 1 2 2
