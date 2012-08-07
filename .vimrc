@@ -134,3 +134,15 @@ autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
 "improve autocomplete menu color
 highlight Pmenu ctermbg=238 gui=bold
+
+" Maps Alt-[h,j,k,l] to resizing a window split
+map <silent> <A-h> <C-w><
+map <silent> <A-j> <C-W>-
+map <silent> <A-k> <C-W>+
+map <silent> <A-l> <C-w>>
+" Maps Alt-[s.v] to horizontal and vertical split respectively
+map <silent> <A-s> :split<CR>
+map <silent> <A-v> :vsplit<CR>
+" Maps Alt-[n,p] for moving next and previous window respectively
+map <silent> <A-n> <C-w><C-w>
+map <silent> <A-p> <C-w><S-w>
