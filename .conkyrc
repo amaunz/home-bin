@@ -62,7 +62,7 @@ use_spacer none		     # Fügt Freiraum zu bestimmten Objekten hinzu
 
 own_window yes
 own_window_class Conky
-own_window_type override
+own_window_type panel
 own_window_transparent yes
 
 # Alternativ-Konfiguration mit der Conky Desktop-Icons ggf. verdeckt, 
