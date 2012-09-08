@@ -1,0 +1,24 @@
+[global_config]
+  window_state = maximized
+  handle_size = 1
+[keybindings]
+[profiles]
+  [[default]]
+    use_system_font = False
+    copy_on_selection = True
+    background_darkness = 0.95
+    scrollback_lines = 5000
+    background_type = transparent
+    scrollbar_position = hidden
+    foreground_color = "#ffffff"
+    font = Monospace 8
+    background_color = "#300a24"
+[layouts]
+  [[default]]
+    [[[child1]]]
+      type = Terminal
+      parent = window0
+    [[[window0]]]
+      type = Window
+      parent = ""
+[plugins]
