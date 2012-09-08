@@ -1,1 +1,1 @@
-hddtemp /dev/sda | awk -F " " '{print $3}'
+/usr/sbin/hddtemp /dev/sda | awk -F " " '{print $3}'
