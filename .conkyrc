@@ -1,147 +1,73 @@
-# Conky, a system monitor, based on torsmo
-#
-# Any original torsmo code is licensed under the BSD license
-#
-# All code written since the fork of torsmo is licensed under the GPL
-#
-# Please see COPYING for details
-#
-# Copyright (c) 2004, Hannu Saransaari and Lauri Hakkarainen
-# Copyright (c) 2005-2010 Brenden Matthews, Philip Kovacs, et. al. (see AUTHORS)
-# All rights reserved.
-#
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-# You should have received a copy of the GNU General Public License
-# along with this program.  If not, see <http://www.gnu.org/licenses/>.
-#
-# .conkyrc modified by Liane M. Dubowy / c't Magazin (www.ct.de)
-
-# Position
-alignment top_right	     # Ausrichtung: top_left/top_right/ 			     
-			     #  middle_left/middle_middle/middle_right/
-                             #  middle_right/bottom_right/bottom_left
-gap_x 20		     # horizontaler Abstand zum Bildschirmrand
-gap_y 60	 	     # vertikaler Abstand zum Bildschirmrand
-
-# Farben
-default_color 8d150C	     # Standardfarbe
-default_outline_color white  # Konturfarbe
-default_shade_color black    # Schattenfarbe
-
-# Schrift
+# Default Fonts
 use_xft yes
-xftfont sans-serif:size=8	
-draw_shades no	  	     # Schattenwurf: yes / no
-draw_outline no		     # Konturen: yes / no
-uppercase no		     # Kapitälchen: yes / no
+xftfont Ubuntu:size=10
+override_utf8_locale yes
 
-# Fenster- und Programmeigenschaften
-background no		     # Hintergrund: yes / no
-draw_borders no		     # Rahmen um das Fenster: yes / no
-border_inner_margin 20	     # Abstand zum Conky-Fensterrand
-border_outer_margin 0	     # Abstand zw. Conky-Fensterrand und Rahmen
-border_width 1		     # Rahmenbreite
-minimum_size 250	     # minimale Fenstergröße
-maximum_width 320	     # maximale Fenstergröße
-double_buffer yes	     # verhindert Flackern
-stippled_borders 0	     # gestrichelte Rahmenlinie
-update_interval 2.0	     # Aktualisierungsintervall
-use_spacer none		     # Fügt Freiraum zu bestimmten Objekten hinzu
+# Performance Settings
+update_interval 1
+total_run_times 0
+double_buffer yes
+no_buffers yes
+net_avg_samples 2
+text_buffer_size 1024
 
-# Konfiguration ohne Desktop-Icons 
-# Conky überdeckt ggf. darunter liegende Desktop-Icons
-# und verschwindet nicht beim Klick auf den Desktop:
-
+# Window Settings
 own_window yes
-own_window_class Conky
-own_window_type panel
 own_window_transparent yes
+own_window_type override
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
 
-# Alternativ-Konfiguration mit der Conky Desktop-Icons ggf. verdeckt, 
-# den Zugriff darauf aber erlaubt. Dabei verschwindet Conky kurz
-# taucht aber automatisch kurz darauf wieder auf:
+# Window border
+draw_borders no
+draw_shades no
 
-# own_window no
-# own_window_class Conky
-# own_window_type desktop
+# Default Color
+default_color E0DFDE
 
-# Nicht-transparente Variante mit grauem Hintergrund
+# Color Title.
+color0 DD3A21
 
-#own_window yes
-#own_window_class Conky
-#own_window_type override
-#own_window_transparent no
-#own_window_colour grey		
+# Size and position
+minimum_size 256 876
+gap_x 1
+gap_y 24
+alignment top_right
 
-# Graphen
-draw_graph_borders yes	# zieht einen Rahmen und Graphen
-no_buffers yes		# zieht Dateisystembuffer vom RAM-Verbrauch ab
-cpu_avg_samples 2	# Zahl der CPU-Messungen, über die der Durchschnittswert gebildet wird	
-net_avg_samples 2	# Zahl der Netzwerkmessungen, über die der Durchschnittswert gebildet wird
-show_graph_scale yes	# zeigt den Höchstwert eines Graphen
-show_graph_range no	# zeigt die Zeitspanne eines Graphen
-
-lua_load ~/.conky/conky.lua
+TEXT
+${image ~/.conky/background.png -p 0,0 -s 256x876}
 
 
-TEXT			# Die folgenden Anweisungen definieren die Conky-Anzeige
+${GOTO 36}Kernel:${GOTO 120}${kernel}
+${GOTO 36}CPU:${GOTO 120}${cpubar cpu1 10,75} ${cpu cpu1} %
+${GOTO 36}RAM:${GOTO 120}${membar 10,75} ${memperc} %
+${GOTO 36}DISK:${GOTO 120}${fs_bar 10,75 /} ${fs_used_perc} %
+${GOTO 36}Uptime:${GOTO 120}${uptime}
 
-${color white}${font sans-serif:bold:size=12}${exec ~/.conky/version.sh}$font 
-Kernel: $sysname $kernel 
+${GOTO 36}${font Ubuntu:size=12}${color0}Network${font}${color}
 
-#${image ~/.conky/ct_logo2012.png -p 175,18 -s 75x28}
+${GOTO 36}Upspeed:${GOTO 120}${if_up wlan0}${upspeedgraph wlan0 10,75 b7b2ad b7b2ad}${else}${upspeedgraph eth0 10,75 b7b2ad b7b2ad}${endif}
+${GOTO 36}Downspeed:${GOTO 120}${if_up wlan0}${downspeedgraph wlan0 10,75 b7b2ad b7b2ad}${else}${downspeedgraph eth0 10,75 b7b2ad b7b2ad}${endif}
+${GOTO 36}Uploaded:${GOTO 120}${if_up wlan0}${totalup wlan0}${else}${totalup eth0}${endif}
+${GOTO 36}Downloaded:${GOTO 120}${if_up wlan0}${totaldown wlan0}${else}${totaldown eth0}${endif}
+${GOTO 36}Local IP:${GOTO 120}${execi 600 ifconfig  | grep 'inet addr:'| grep -v '127.0.0.1' | cut -d: -f2 | awk '{ print $1}'}
+${GOTO 36}Public IP:${GOTO 120}${execi 600 ~/.conky/publicip.sh}
 
-#${color white}${font sans-serif:bold:size=10}DATUM & ZEIT ${hr 2}
-#${alignc 28}${font Arial Black:size=24}${time %H:%M}$font
-#${alignc}${Time %A, %d. %B %Y}
-#
-${color white}${font sans-serif:bold:size=10}SYSTEM ${hr 2}$font
-${color white}Host: $alignr$nodename
-${color white}Uptime:$alignr$color$uptime
-${color white}Frequency (in MHz):$alignr$color $freq
-${color white}Frequency (in GHz):$alignr$color $freq_g
+${GOTO 36}${font Ubuntu:size=12}${color0}Temperatures${font}${color}
 
-${color white}${font sans-serif:bold:size=10}PROCESSOR $font${hr 2}
-${color white}${cpugraph cpu0 30,250}
-${color white}CPU:$color $cpu% ${cpubar cpu0 5,200}
-${color white}CPU Temperature: $alignr${execi 10 ~/.conky/cputemp.sh}°C
-#${color white}CPU Temperature: $alignr$color${if_existing /sys/class/hwmon/hwmon0/name}${if_existing /sys/class/hwmon/hwmon0/name atk0110}${lua_parse conky_hwmon 0 temp 1}${endif}${endif}${if_existing /sys/class/hwmon/hwmon1/name}${if_existing /sys/class/hwmon/hwmon1/name atk0110}${lua_parse conky_hwmon 1 temp 1}${endif}${endif}°C
+${GOTO 36}CPU:${GOTO 120}${execi 4 ~/.conky/cputemp.sh}°C
+${GOTO 36}Hard disk:${GOTO 120}${execi 4 ~/.conky/hddtemp.sh}
 
-${color white}${font sans-serif:bold:size=10}RAM $font${hr 2}
-${color white}RAM:$color $alignc$mem / $memmax - $memperc%
-$membar
-${color white}Swap:$color $swap/$swapmax - $swapperc% $swapbar
+${GOTO 36}${font Ubuntu:size=12}${color0}Processes${font}${color}
+${GOTO 36}             ${GOTO 150}   CPU  MEM
+${GOTO 36}${top name 1}${GOTO 150} ${top cpu 1} ${top mem 1}
+${GOTO 36}${top name 2}${GOTO 150} ${top cpu 2} ${top mem 2}
+${GOTO 36}${top name 3}${GOTO 150} ${top cpu 3} ${top mem 3}
+${GOTO 36}${top name 4}${GOTO 150} ${top cpu 4} ${top mem 4}
+${GOTO 36}${top name 5}${GOTO 150} ${top cpu 5} ${top mem 5}
 
-${color white}${font sans-serif:bold:size=10}HARD DISK $font${hr 2}
-$color${fs_used /}/${fs_size /} $fs_bar
-${color white}HDD Temperature: $alignr${execi 10 ~/.conky/hddtemp.sh} 
+${GOTO 36}${font Ubuntu:size=12}${color0}Time and date${font}${color}
 
-${color white}${font sans-serif:bold:size=10}NETWORK $font${hr 2}
-${color white}External IP:$alignr$color ${execi 600 ~/.conky/publicip.sh}
+${GOTO 36}${time %H:%M}  ${time %d/%m/%Y}
+${GOTO 36}${time %A}, ${time %d} ${time %B} ${time %Y}
 
-${color white}Internal IP eth0:$alignr$color ${addr eth0} 
-${downspeedgraph eth0}
-DL:${downspeed eth0} kb/s $alignr total: ${totaldown eth0}
-${upspeedgraph eth0}
-UL:${upspeed eth0} kb/s $alignr total: ${totalup eth0}
 
-${color white}Internal IP wlan0:$alignr$color ${addr wlan0} 
-${downspeedgraph wlan0}
-DL:${downspeed wlan0} kb/s $alignr total: ${totaldown wlan0}
-${upspeedgraph wlan0}
-UL:${upspeed wlan0} kb/s $alignr total: ${totalup wlan0}
-
-${color white}${font sans-serif:bold:size=10}PROCESSES $font${hr 2}
-${color white}Name     $alignr PID CPU% MEM%
-$color${top name 1} $alignr ${top pid 1} ${top cpu 1} ${top mem 1}
-$color${top name 2} $alignr ${top pid 2} ${top cpu 2} ${top mem 2}
-$color${top name 3} $alignr ${top pid 3} ${top cpu 3} ${top mem 3}
-$color${top name 4} $alignr ${top pid 4} ${top cpu 4} ${top mem 4}
