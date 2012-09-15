@@ -42,6 +42,7 @@ ${GOTO 36}CPU:${GOTO 120}${cpubar cpu1 10,75} ${cpu cpu1} %
 ${GOTO 36}RAM:${GOTO 120}${membar 10,75} ${memperc} %
 ${GOTO 36}DISK:${GOTO 120}${fs_bar 10,75 /} ${fs_used_perc} %
 ${GOTO 36}Uptime:${GOTO 120}${uptime}
+${GOTO 36}${execi 1800 aptitude search "~U" | wc -l} Updates available
 
 ${GOTO 36}${font Ubuntu:size=12}${color0}Network${font}${color}
 
@@ -49,7 +50,7 @@ ${GOTO 36}Upspeed:${GOTO 120}${if_up wlan0}${upspeedgraph wlan0 10,75 b7b2ad b7b
 ${GOTO 36}Downspeed:${GOTO 120}${if_up wlan0}${downspeedgraph wlan0 10,75 b7b2ad b7b2ad}${else}${downspeedgraph eth0 10,75 b7b2ad b7b2ad}${endif}
 ${GOTO 36}Uploaded:${GOTO 120}${if_up wlan0}${totalup wlan0}${else}${totalup eth0}${endif}
 ${GOTO 36}Downloaded:${GOTO 120}${if_up wlan0}${totaldown wlan0}${else}${totaldown eth0}${endif}
-${GOTO 36}Local IP:${GOTO 120}${execi 600 ifconfig  | grep 'inet addr:'| grep -v '127.0.0.1' | cut -d: -f2 | awk '{ print $1}'}
+${GOTO 36}Local IP:${GOTO 120}${execi 600 ifconfig  | grep 'inet addr:'| grep -v '127.0.0.1' | head -1 | cut -d: -f2 | awk '{ print $1}'}
 ${GOTO 36}Public IP:${GOTO 120}${execi 600 ~/.conky/publicip.sh}
 
 ${GOTO 36}${font Ubuntu:size=12}${color0}Temperatures${font}${color}
@@ -65,9 +66,7 @@ ${GOTO 36}${top name 3}${GOTO 150} ${top cpu 3} ${top mem 3}
 ${GOTO 36}${top name 4}${GOTO 150} ${top cpu 4} ${top mem 4}
 ${GOTO 36}${top name 5}${GOTO 150} ${top cpu 5} ${top mem 5}
 
-${GOTO 36}${font Ubuntu:size=12}${color0}Time and date${font}${color}
-
-${GOTO 36}${time %H:%M}  ${time %d/%m/%Y}
-${GOTO 36}${time %A}, ${time %d} ${time %B} ${time %Y}
-
-
+#${GOTO 36}${font Ubuntu:size=12}${color0}Calendar${font}${color}
+#
+#${execi 600 conkyGoogleCalendar --username=user --password=passwd --daysahead=14 --limit=10 --template=~/.conky/conkyGoogleCalendar.template | grep -v '^$' | grep -v 'Kalenderwoche' | sed 's,\(...\ \)\(.*\)/\(.*\)/\(....\),\1\2/\3,g' | cut -b -40}
+#
