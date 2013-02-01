@@ -51,11 +51,11 @@ man() {
 			man "$@"
 }
  
-# Audio support for development
-alias groovesalad="mpg123 -Cq http://ice.somafm.com/groovesalad"
-alias cliqhop="mpg123 -Cq http://ice.somafm.com/cliqhop"
-alias spacestation="mpg123 -Cq http://ice.somafm.com/spacestation"
-alias missioncontrol="mpg123 -Cq http://ice.somafm.com/missioncontrol"
-alias secretagent="mpg123 -Cq http://ice.somafm.com/secretagent"
-alias christmas="mpg123 -Cq http://ice.somafm.com/christmas"
-alias dronezone="mpg123 -Cq http://ice.somafm.com/dronezone"
+# Audio support for development work
+alias somafm_groovesalad="mpg123 -Cq http://ice.somafm.com/groovesalad"
+alias somafm_cliqhop="mpg123 -Cq http://ice.somafm.com/cliqhop"
+alias somafm_spacestation="mpg123 -Cq http://ice.somafm.com/spacestation"
+alias somafm_missioncontrol="mpg123 -Cq http://ice.somafm.com/missioncontrol"
+alias somafm_secretagent="mpg123 -Cq http://ice.somafm.com/secretagent"
+alias somafm_christmas="mpg123 -Cq http://ice.somafm.com/christmas"
+alias somafm_dronezone="mpg123 -Cq http://ice.somafm.com/dronezone"

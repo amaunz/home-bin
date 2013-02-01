@@ -132,3 +132,8 @@ let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
 "improve autocomplete menu color
 highlight Pmenu ctermbg=238 gui=bold
 
+" Easily navigate windows by Ctrl + Arrow keys
+nmap <silent> <C-Up> :wincmd k<CR>
+nmap <silent> <C-Down> :wincmd j<CR>
+nmap <silent> <C-Left> :wincmd h<CR>
+nmap <silent> <C-Right> :wincmd l<CR>
