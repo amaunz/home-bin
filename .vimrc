@@ -135,4 +135,7 @@ highlight Pmenu ctermbg=238 gui=bold
 " infect with pathogen, see https://github.com/tpope/vim-pathogen
 execute pathogen#infect()
 
+" map Ctrl+D to nerdtree
+map <C-d> :NERDTreeToggle<CR>
+
 
