@@ -133,7 +133,7 @@ let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
 highlight Pmenu ctermbg=238 gui=bold
 
 " infect with pathogen, see https://github.com/tpope/vim-pathogen
-execute pathogen#infect()
+" execute pathogen#infect()
 
 " map Ctrl+E to toggle nerdtree
 map <C-c> :NERDTreeToggle<CR>
