@@ -9,6 +9,12 @@
 [alias]
 	lol = log --graph --decorate --pretty=oneline --abbrev-commit --all
 	lg = log -p
+	st = status
+	ci = commit
+	br = branch
+	co = checkout
+	df = diff
+	lg = log -p
 [push]
 	default = current
 [color]

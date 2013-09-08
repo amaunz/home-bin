@@ -3,10 +3,15 @@
 [pager]
   diff =
 [user]
-	name = am
+	name = Andreas Maunz
 	email = andreas@maunz.de
 [alias]
 	lol = log --graph --decorate --pretty=oneline --abbrev-commit --all
+	st = status
+	ci = commit
+	br = branch
+	co = checkout
+	df = diff
 	lg = log -p
 [push]
 	default = current

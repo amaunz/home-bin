@@ -22,7 +22,7 @@ mkdir -p ~/.config/terminator 2>/dev/null
 case $yn in [Yy]* ) 
   cp .gitconfig_cfg .gitconfig 
   sed -i "s,REPO_DIR,`pwd`,g" .gitconfig
-  cp_files ".bash_profile .bashrc .bash_aliases .vimrc .gvimrc .irbrc .gitconfig .screenrc .htoprc .lessfilter .config/terminator/config"
+  cp_files ".bash_profile .bashrc .bash_aliases .vimrc .gvimrc .irbrc .gitconfig .screenrc .htoprc .lessfilter .config/terminator/config .Rprofile"
 esac
 
 # Conky (graphical system monitor for the desktop)
