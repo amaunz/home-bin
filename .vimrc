@@ -135,14 +135,6 @@ highlight Pmenu ctermbg=238 gui=bold
 " infect with pathogen, see https://github.com/tpope/vim-pathogen
 " execute pathogen#infect()
 
-" map Ctrl+E to toggle nerdtree
-map <C-c> :NERDTreeToggle<CR>
-
-" map Ctrl+P to invoke CtrlP file finder (http://kien.github.com/ctrlp.vim/)
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
-
-" automatically remove trailing whitespace on save
-autocmd BufWritePre * :%s/\s\+$//e
-
+" map Ctrl+c to toggle nerdtree
+" map <C-c> :NERDTreeToggle<CR>
 
