@@ -1,0 +1,12 @@
+[submodule "bundle/nerdtree"]
+	path = bundle/nerdtree
+	url = git://github.com/scrooloose/nerdtree.git
+[submodule "bundle/vim-latex"]
+	path = bundle/vim-latex
+	url = git://github.com/jcf/vim-latex.git
+[submodule "bundle/supertab"]
+	path = bundle/supertab
+	url = git://github.com/ervandew/supertab.git
+[submodule "bundle/delimitMate.vim"]
+	path = bundle/delimitMate.vim
+	url = git://github.com/vim-scripts/delimitMate.vim.git
