@@ -28,6 +28,8 @@ esac
 # Vim bundle
 echo
 read -p "Vim plugins. Install (y/N)?" yn
+git submodule init
+git submodule update
 mkdir -p ~/.vim 2>/dev/null
 case $yn in [Yy]* )
   cmd="rsync -av --delete bundle ~/.vim"
