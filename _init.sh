@@ -33,10 +33,11 @@ git submodule update
 mkdir -p ~/.vim 2>/dev/null
 case $yn in [Yy]* )
   cmd="rsync -av --delete bundle ~/.vim"
+  cmd2="rsync -av autoload ~/.vim"
   read -p "WARNING: Really delete existing plugins (y/N)?" yn
   case $yn in
     [Yy]*)
-      eval "$cmd" ;;
+      eval "$cmd"; eval "$cmd2" ;;
     *)
       printf "Use '%s' to manually sync" "$cmd"
       echo
