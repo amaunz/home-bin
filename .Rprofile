@@ -9,6 +9,7 @@ if (interactive()) {
     }
     message(pkgMsg)
   }
+  suppressWarnings(rm(pkgMsg, pkgsToLoad, pkg))
 }
 
 ## Don't ask me for my CRAN mirror every time
