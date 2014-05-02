@@ -3,6 +3,7 @@ if (interactive()) {
   for (pkg in pkgsToLoad) {
     if (pkg %in% rownames(utils:::installed.packages())) {
       library(pkg, character.only=T)
+      if (pkg == 'colorout') setOutputColors256(verbose=F)
       pkgMsg = paste("Note: library", pkg, "loaded.")
     } else {
       pkgMsg = paste("Note: library", pkg, "is not installed.")
