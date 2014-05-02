@@ -1,14 +1,15 @@
-## See http://gettinggeneticsdone.blogspot.com/2013/06/customize-rprofile.html
-
-## Load packages
-# library(BiocInstaller)
-
-## Don't show those silly significanct stars
-# options(show.signif.stars=FALSE)
-
-## Do you want to automatically convert strings to factor variables in a data.frame?
-## WARNING!!! This makes your code less portable/reproducible.
-# options(stringsAsFactors=FALSE)
+if (interactive()) {
+  pkgsToLoad=c('colorout', 'setwidth', 'vimcom')
+  for (pkg in pkgsToLoad) {
+    if (pkg %in% rownames(utils:::installed.packages())) {
+      library(pkg, character.only=T)
+      pkgMsg = paste("Note: library", pkg, "loaded.")
+    } else {
+      pkgMsg = paste("Note: library", pkg, "is not installed.")
+    }
+    message(pkgMsg)
+  }
+}
 
 ## Don't ask me for my CRAN mirror every time
 options("repos" = c(CRAN = "http://cran.rstudio.com/"))
@@ -62,15 +63,3 @@ options("repos" = c(CRAN = "http://cran.rstudio.com/"))
 ## Attach all the variables above
 attach(.env)
 
-### .First() run at the start of every R session.
-### Use to load commonly used packages?
-#.First <- function() {
-#  # library(ggplot2)
-#  cat("\nSuccessfully loaded .Rprofile at", date(), "\n")
-#}
-
-### .Last() run at the end of the session
-#.Last <- function() {
-#  # save command history here?
-#  cat("\nGoodbye at ", date(), "\n")
-#}

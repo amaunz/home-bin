@@ -1,5 +1,6 @@
 [diff]
   external = /home/am/home-bin/git_diff_wrapper
+
 [pager]
   diff =
 [user]
@@ -7,6 +8,7 @@
 	email = andreas@maunz.de
 [alias]
 	lol = log --graph --decorate --pretty=oneline --abbrev-commit --all
+	lg = log -p
 	st = status
 	ci = commit
 	br = branch
