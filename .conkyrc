@@ -60,7 +60,7 @@ ${GOTO 36}Upspeed:${GOTO 120}${if_up wlan0}${upspeedgraph wlan0 10,75 b7b2ad b7b
 ${GOTO 36}Downspeed:${GOTO 120}${if_up wlan0}${downspeedgraph wlan0 10,75 b7b2ad b7b2ad}${else}${downspeedgraph eth0 10,75 b7b2ad b7b2ad}${endif}
 ${GOTO 36}Uploaded:${GOTO 120}${if_up wlan0}${totalup wlan0}${else}${totalup eth0}${endif}
 ${GOTO 36}Downloaded:${GOTO 120}${if_up wlan0}${totaldown wlan0}${else}${totaldown eth0}${endif}
-${GOTO 36}Local IP:${GOTO 120}${execi 6 ifconfig  | grep 'inet addr:'| grep -v '127.0.0.1' | head -1 | cut -d: -f2 | awk '{ print $1}'}
+${GOTO 36}Local IP:${GOTO 120}${execi 6 /sbin/ifconfig  | grep 'inet addr:'| grep -v '127.0.0.1' | head -1 | cut -d: -f2 | awk '{ print $1}'}
 ${if_gw}${GOTO 36}Gateway:${GOTO 120}${execi 6 ~/.conky/gateway.sh}${endif}
 ${if_gw}${GOTO 36}Public IP:${GOTO 120}${execi 6 ~/.conky/publicip.sh}${endif}
 
