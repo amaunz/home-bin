@@ -7,10 +7,12 @@ function cp_files {
   filelist="$1"
   for f in $filelist; do
     if [ -f "$HOME/$f" ] && ! cmp "$f" "$HOME/$f" >/dev/null 2>&1; then
-      read -p "File  $HOME/$f exists. Vimdiff (y/N)? " yn 
-      case $yn in 
+      read -p "File  $HOME/$f exists. Vimdiff (<y>es, compare files; <N>o, skip file; <o>verwrite file)? " yno 
+      case $yno in 
         [Yy]*) 
-          cp -v --backup=numbered "$HOME/$f" "$HOME/$f~" && vimdiff "$f" "$HOME/$f"
+          cp -v --backup=numbered "$HOME/$f" "$HOME/$f~" && vimdiff "$f" "$HOME/$f";;
+        [Oo]*) 
+          cp -v --parents $f "$HOME"
       esac
     else
       cp -v --parents $f "$HOME"
@@ -21,7 +23,7 @@ function cp_files {
 
 # Main shell tools
 echo
-read -p "Main shell tools. Install (y/N)? " yn
+read -p "Main shell tools. Install (<y>es, <N>o)? " yn
 mkdir -p ~/.config/terminator 2>/dev/null
 case $yn in [Yy]* )
   cp .gitconfig_cfg .gitconfig
@@ -31,14 +33,14 @@ esac
 
 # Vim bundle
 echo
-read -p "Vim plugins. Install (y/N)?" yn
+read -p "Vim plugins. Install (<y>es, <N>o)?" yn
 git submodule init
 git submodule update
 mkdir -p ~/.vim 2>/dev/null
 case $yn in [Yy]* )
   cmd="rsync -av --delete bundle ~/.vim"
   cmd2="rsync -av autoload ~/.vim"
-  read -p "WARNING: Really delete existing plugins (y/N)?" yn
+  read -p "WARNING: Really delete existing plugins (<y>es, <N>o)?" yn
   case $yn in
     [Yy]*)
       eval "$cmd"; eval "$cmd2" ;;
@@ -51,7 +53,7 @@ esac
 
 # Conky (graphical system monitor for the desktop)
 echo
-read -p "Conky (graphical system monitor for the desktop). Install (y/N)? " yn
+read -p "Conky (graphical system monitor for the desktop). Install (<y>es, <N>o)? " yn
 case $yn in [Yy]* )
   cp_files ".conkyrc"
   mkdir $HOME/.conky 2>/dev/null
