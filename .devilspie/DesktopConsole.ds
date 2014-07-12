@@ -1,0 +1,14 @@
+if
+        (matches (window_role) "DesktopConsole")
+        (begin
+                (set_workspace 1)
+                (below)
+                (undecorate)
+                (skip_pager)
+                (skip_tasklist)
+                (wintype "utility")
+                (fullscreen)
+                (maximize)
+                (stick)
+        )
+)
