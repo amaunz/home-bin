@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Exec=sh -c "sleep 10; exec conky -c ~/.conkyrc"
+Hidden=false
+X-GNOME-Autostart-enabled=true
+Name[en_US]=Synapse
+Name=Conky (graphical system monitor for the desktop)
+Comment[en_US]=
+Comment=
+

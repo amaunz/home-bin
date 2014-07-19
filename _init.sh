@@ -28,8 +28,9 @@ mkdir -p ~/.config/terminator 2>/dev/null
 case $yn in [Yy]* )
   cp .gitconfig_cfg .gitconfig
   sed -i "s,REPO_DIR,`pwd`,g" .gitconfig
-  cp_files ".bash_profile .bashrc .bash_aliases .vimrc .gvimrc .irbrc .gitconfig .screenrc .htoprc .lessfilter .config/terminator/config .Rprofile"
+  cp_files ".bash_profile .bashrc .bash_aliases .vimrc .gvimrc .irbrc .gitconfig .screenrc .htoprc .lessfilter .config/terminator/config .Rprofile "
 esac
+
 
 # Vim bundle
 echo
@@ -51,18 +52,43 @@ case $yn in [Yy]* )
   esac
 esac
 
+
+# MPD + MPC + NCMPCPP (music player daemon)
+echo
+read -p "MPD + MPC + NCMPCPP (music player daemon). Install (<y>es, <N>o)? " yn
+case $yn in [Yy]* )
+  cp_files ".ncmpcpp/config"
+  read -p "Install packages mpd, mpc, ncmpcpp (<y>es, <n>o)? " yn
+  case $yn in [Yy]* )
+    sudo aptitude install mpd mpc ncmpcpp
+  esac
+  read -p "Add somafm radio station to mpd (<y>es, <n>o)? " yn
+  case $yn in [Yy]* )
+    mpc add http://ice.somafm.com/dronezone
+  esac
+  echo "IMPORTANT: Support for graphical visualizer."
+  read -p "Add a FIFO config to /etc/mpd.conf (<y>es, <n>o)? " yn
+  case $yn in [Yy]* )
+    cat mpd.conf | sudo tee -a /etc/mpd.conf
+  esac
+esac
+
+
 # Conky (graphical system monitor for the desktop)
 echo
-read -p "Conky (graphical system monitor for the desktop). Install (<y>es, <N>o)? " yn
+read -p "conky (graphical system monitor for the desktop). install (<y>es, <n>o)? " yn
 case $yn in [Yy]* )
   cp_files ".conkyrc"
   mkdir $HOME/.conky 2>/dev/null
   cp_files "`/bin/ls .conky/*`"
-  echo "IMPORTANT: Install packages conky, lm-sensors, hddtemp. Then set hddtemp uid root:"
-  echo "IMPORTANT:  sudo aptitude install conky lm-sensors hddtemp"
-  echo "IMPORTANT:  sudo chmod u+s /usr/sbin/hddtemp"
-  echo "IMPORTANT: Add a startup link to your Desktop manager:"
-  echo "IMPORTANT:  sh -c \"sleep 10; exec conky -c ~/.conkyrc\""
-  echo "IMPORTANT: Thank you for your attention."
+  read -p "Install packages conky, lm-sensors, hddtemp (<y>es, <n>o)? " yn
+  case $yn in [Yy]* )
+    sudo aptitude install conky lm-sensors hddtemp
+    sudo chmod u+s /usr/sbin/hddtemp
+  esac
+  read -p "Add a startup link to ~/.config/autostart (<y>es, <n>o)? " yn
+  case $yn in [Yy]* )
+    cp_files ".config/autostart/conky.desktop"
+  esac
 esac
 
