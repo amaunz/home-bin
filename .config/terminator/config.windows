@@ -1,0 +1,16 @@
+[global_config]
+  dbus = True
+  handle_size = 1
+[keybindings]
+[profiles]
+  [[default]]
+    background_color = "#300a24"
+[layouts]
+  [[default]]
+    [[[child1]]]
+      type = Terminal
+      parent = window0
+    [[[window0]]]
+      type = Window
+      parent = ""
+[plugins]
