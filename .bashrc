@@ -91,9 +91,10 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
-for file in /etc/bash_completion.d/* ; do
-   source "$file"
-done
+# enable this for cygwin
+# for file in /etc/bash_completion.d/* ; do
+#    source "$file"
+# done
 
 # colorize less (uses file ~/.lessfilter)
 export LESS="-R"
