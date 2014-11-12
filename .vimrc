@@ -138,3 +138,6 @@ highlight Pmenu ctermbg=238 gui=bold
 " map Ctrl+c to toggle nerdtree
 " map <C-c> :NERDTreeToggle<CR>
 
+" respect dos line endings. when saving, use the same format. on mixed files,
+" unix takes precedence
+set ffs=dos,unix
