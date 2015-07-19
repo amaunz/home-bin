@@ -59,12 +59,12 @@ read -p "Root shell. Install (<y>es, <N>o)?" yn
 case $yn in [Yy]* )
   mkdir -p ~/rootshell 2>/dev/null
   cp_files "rootshell/rootshell.c rootshell/Makefile"
-  make -C -f ~/rootshell/Makefile
+  make -C ~/rootshell
   read -p "WARNING: Use sudo to setuid root (<y>es, <N>o)?" yn
   case $yn in
     [Yy]*)
       sudo chown root.root ~/rootshell/rootshell
-      sudo chmod 475 ~/rootshell/rootshell
+      sudo chmod 4755 ~/rootshell/rootshell
   esac
 esac
 
