@@ -53,6 +53,22 @@ case $yn in [Yy]* )
 esac
 
 
+# Root Shell
+echo
+read -p "Root shell. Install (<y>es, <N>o)?" yn
+case $yn in [Yy]* )
+  mkdir -p ~/rootshell 2>/dev/null
+  cp_files "rootshell/rootshell.c rootshell/Makefile"
+  make -C -f ~/rootshell/Makefile
+  read -p "WARNING: Use sudo to setuid root (<y>es, <N>o)?" yn
+  case $yn in
+    [Yy]*)
+      sudo chown root.root ~/rootshell/rootshell
+      sudo chmod 475 ~/rootshell/rootshell
+  esac
+esac
+
+
 # MPD + MPC + NCMPCPP (music player daemon)
 echo
 read -p "MPD + MPC + NCMPCPP (music player daemon). Install (<y>es, <N>o)? " yn
