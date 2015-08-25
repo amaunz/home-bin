@@ -25,6 +25,10 @@ function cp_files {
 echo
 read -p "Main shell tools. Install (<y>es, <N>o)? " yn
 mkdir -p ~/.config/terminator 2>/dev/null
+mkdir -p ~/.vim/_backup 2>/dev/null
+mkdir -p ~/.vim/_undo 2>/dev/null
+mkdir -p ~/.vim/_swap 2>/dev/null
+mkdir -p ~/tmp 2>/dev/null
 case $yn in [Yy]* )
   cp .gitconfig_cfg .gitconfig
   sed -i "s,REPO_DIR,`pwd`,g" .gitconfig

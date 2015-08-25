@@ -141,3 +141,15 @@ highlight Pmenu ctermbg=238 gui=bold
 " respect dos line endings. when saving, use the same format. on mixed files,
 " unix takes precedence
 set ffs=dos,unix
+
+" swap files (.swp) in a common location
+" // means use the file's full path
+set dir=~/.vim/_swap//
+
+" backup files (~) in a common location if possible
+set backup
+set backupdir=~/.vim/_backup/,~/tmp,.
+
+" turn on undo files, put them in a common location
+set undofile
+set undodir=~/.vim/_undo/)
