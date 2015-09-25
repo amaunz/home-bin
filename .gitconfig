@@ -1,5 +1,5 @@
 [diff]
-  external = /home/am/home-bin/git_diff_wrapper
+  external = /home/vagrant/home-bin/git_diff_wrapper
 
 [pager]
   diff =
@@ -19,3 +19,5 @@
 	default = current
 [color]
 	ui = true
+[url "https://"]
+	insteadOf = git://
