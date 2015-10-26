@@ -1,1 +1,0 @@
-rootshell: rootshell.c

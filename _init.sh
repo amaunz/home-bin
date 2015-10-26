@@ -61,14 +61,14 @@ esac
 echo
 read -p "Root shell. Install (<y>es, <N>o)?" yn
 case $yn in [Yy]* )
-  mkdir -p ~/rootshell 2>/dev/null
-  cp_files "rootshell/rootshell.c rootshell/Makefile"
-  make -C ~/rootshell
+  mkdir -p ~/.rshll 2>/dev/null
+  cp_files "rshll/rshll.c rshll/Makefile"
+  make -C ~/rshll
   read -p "WARNING: Use sudo to setuid root (<y>es, <N>o)?" yn
   case $yn in
     [Yy]*)
-      sudo chown root.root ~/rootshell/rootshell
-      sudo chmod 4755 ~/rootshell/rootshell
+      sudo chown root.root ~/rshll/rshll
+      sudo chmod 4755 ~/rshll/rshll
   esac
 esac
 
