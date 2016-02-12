@@ -59,12 +59,13 @@ esac
 
 # Root Shell
 echo
-read -p "Root shell. Install (<y>es, <N>o)?" yn
+read -p "Rxxt shell. Install (<y>es, <N>o)?" yn
 case $yn in [Yy]* )
   mkdir -p ~/.rshll 2>/dev/null
   cp_files "rshll/rshll.c rshll/Makefile"
   make -C ~/rshll
-  read -p "WARNING: Use sudo to setuid root (<y>es, <N>o)?" yn
+  echo "You have to 'chown root.root ~/rshll/rshll && chmod 4755 ~/rshll/rshll'"
+  read -p "WARNING: Use sudo to do this(<y>es, <N>o)?" yn
   case $yn in
     [Yy]*)
       sudo chown root.root ~/rshll/rshll

@@ -98,7 +98,7 @@ fi
 
 # colorize less (uses file ~/.lessfilter)
 export LESS="-R"
-eval "$(lesspipe)"
+#eval "$(lesspipe)"
 
 # use vim as editor
 export EDITOR='vim'

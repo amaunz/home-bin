@@ -151,8 +151,8 @@ set backup
 set backupdir=~/.vim/_backup/,~/tmp,.
 
 " turn on undo files, put them in a common location
-set undofile
-set undodir=~/.vim/_undo/
+"set undofile
+"set undodir=~/.vim/_undo/
 
 " set UTF-8 encoding
 set encoding=utf-8
