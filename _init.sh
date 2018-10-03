@@ -58,58 +58,58 @@ esac
 
 
 # Root Shell
-echo
-read -p "Rxxt shell. Install (<y>es, <N>o)?" yn
-case $yn in [Yy]* )
-  mkdir -p ~/.rshll 2>/dev/null
-  cp_files "rshll/rshll.c rshll/Makefile"
-  make -C ~/rshll
-  echo "You have to 'chown root.root ~/rshll/rshll && chmod 4755 ~/rshll/rshll'"
-  read -p "WARNING: Use sudo to do this(<y>es, <N>o)?" yn
-  case $yn in
-    [Yy]*)
-      sudo chown root.root ~/rshll/rshll
-      sudo chmod 4755 ~/rshll/rshll
-  esac
-esac
+#echo
+#read -p "Rxxt shell. Install (<y>es, <N>o)?" yn
+#case $yn in [Yy]* )
+#  mkdir -p ~/.rshll 2>/dev/null
+#  cp_files "rshll/rshll.c rshll/Makefile"
+#  make -C ~/rshll
+#  echo "You have to 'chown root.root ~/rshll/rshll && chmod 4755 ~/rshll/rshll'"
+#  read -p "WARNING: Use sudo to do this(<y>es, <N>o)?" yn
+#  case $yn in
+#    [Yy]*)
+#      sudo chown root.root ~/rshll/rshll
+#      sudo chmod 4755 ~/rshll/rshll
+#  esac
+#esac
 
 
 # MPD + MPC + NCMPCPP (music player daemon)
-echo
-read -p "MPD + MPC + NCMPCPP (music player daemon). Install (<y>es, <N>o)? " yn
-case $yn in [Yy]* )
-  cp_files ".ncmpcpp/config"
-  read -p "Install packages mpd, mpc, ncmpcpp (<y>es, <N>o)? " yn
-  case $yn in [Yy]* )
-    sudo aptitude install mpd mpc ncmpcpp
-  esac
-  read -p "Add somafm radio station to mpd (<y>es, <N>o)? " yn
-  case $yn in [Yy]* )
-    mpc add http://ice.somafm.com/dronezone
-  esac
-  echo "IMPORTANT: Support for graphical visualizer."
-  read -p "Add a FIFO config to /etc/mpd.conf (<y>es, <N>o)? " yn
-  case $yn in [Yy]* )
-    cat mpd.conf | sudo tee -a /etc/mpd.conf
-  esac
-esac
+#echo
+#read -p "MPD + MPC + NCMPCPP (music player daemon). Install (<y>es, <N>o)? " yn
+#case $yn in [Yy]* )
+#  cp_files ".ncmpcpp/config"
+#  read -p "Install packages mpd, mpc, ncmpcpp (<y>es, <N>o)? " yn
+#  case $yn in [Yy]* )
+#    sudo aptitude install mpd mpc ncmpcpp
+#  esac
+#  read -p "Add somafm radio station to mpd (<y>es, <N>o)? " yn
+#  case $yn in [Yy]* )
+#    mpc add http://ice.somafm.com/dronezone
+#  esac
+#  echo "IMPORTANT: Support for graphical visualizer."
+#  read -p "Add a FIFO config to /etc/mpd.conf (<y>es, <N>o)? " yn
+#  case $yn in [Yy]* )
+#    cat mpd.conf | sudo tee -a /etc/mpd.conf
+#  esac
+#esac
 
 
 # Conky (graphical system monitor for the desktop)
-echo
-read -p "conky (graphical system monitor for the desktop). install (<y>es, <N>o)? " yn
-case $yn in [Yy]* )
-  cp_files ".conkyrc"
-  mkdir $HOME/.conky 2>/dev/null
-  cp_files "`/bin/ls .conky/*`"
-  read -p "Install packages conky, lm-sensors, hddtemp (<y>es, <N>o)? " yn
-  case $yn in [Yy]* )
-    sudo aptitude install conky lm-sensors hddtemp
-    sudo chmod u+s /usr/sbin/hddtemp
-  esac
-  read -p "Add a startup link to ~/.config/autostart (<y>es, <N>o)? " yn
-  case $yn in [Yy]* )
-    cp_files ".config/autostart/conky.desktop"
-  esac
-esac
+#echo
+#read -p "conky (graphical system monitor for the desktop). install (<y>es, <N>o)? " yn
+#case $yn in [Yy]* )
+#  cp_files ".conkyrc"
+#  mkdir $HOME/.conky 2>/dev/null
+#  cp_files "`/bin/ls .conky/*`"
+#  read -p "Install packages conky, lm-sensors, hddtemp (<y>es, <N>o)? " yn
+#  case $yn in [Yy]* )
+#    sudo aptitude install conky lm-sensors hddtemp
+#    sudo chmod u+s /usr/sbin/hddtemp
+#  esac
+#  read -p "Add a startup link to ~/.config/autostart (<y>es, <N>o)? " yn
+#  case $yn in [Yy]* )
+#    cp_files ".config/autostart/conky.desktop"
+#  esac
+#esac
 
