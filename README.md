@@ -23,7 +23,7 @@ cd home-bin                                  # change directory
 ```
 Please answer all questions with `y`, accepting the proposed changes. The changes are easy to revert if needed. Log out and in again to see the effect.
 
-2. Configure git to use vim for `git diff ...`
+2. Configure git
 Adjust `~/.gitconfig` to use your name and email address for git commits:
 
 ```
