@@ -16,12 +16,12 @@ To install, follow these easy steps:
 
 1. Install the package
 ```
-cd # change directory to $HOME
-git clone git://github.com/amaunz/home-bin
-cd home-bin
-./_init.sh # save to answer always 'y'
+cd                                           # change directory to $HOME
+git clone git://github.com/amaunz/home-bin   # clone the repository
+cd home-bin                                  # change directory
+./_init.sh                                   # install - it is safe to answer always 'y'
 ```
-Please answer all questions with 'y', accepting the proposed changes. The changes are easy to revert if needed. Log out and in again to see the effect.
+Please answer all questions with `y`, accepting the proposed changes. The changes are easy to revert if needed. Log out and in again to see the effect.
 
 2. Configure git to use vim for `git diff ...`
 Adjust `~/.gitconfig` to use your name and email address for git commits:
