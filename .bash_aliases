@@ -50,6 +50,25 @@ man() {
 		LESS_TERMCAP_us=$(printf "\e[1;32m") \
 			man "$@"
 }
+
+# new line at end of file
+newline_at_eof()
+{
+    if [ -z "$(tail -c 1 "$1")" ]
+    then
+        echo "'$1': Newline at end of file."
+        return 0
+    else
+        echo "''$1' No newline at end of file!"
+        return 1
+    fi
+}
+
+fix_up_newline()
+{
+    sed -i -e '$a\' "$1"
+}
+
  
 # Audio support for development work
 alias somafm_groovesalad="mpg123 -Cq http://ice.somafm.com/groovesalad"
